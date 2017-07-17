@@ -37,16 +37,18 @@ class Resource
   }
 
   /**
-   * Retrieve a employee filtering by ID.
+   * Retrieve a list of employee when salary between $minRange and $maxRange.
    */
-  public static function findById($id)
+  public function retrieveBySalyRange($minRange, $maxRange)
   {
     $source = self::retrieveAll();
-    foreach ($source as $value ) {
-      if ($value->id === $id) {
-        return $value;
+    $returnValues = [];
+    foreach ($source as $key => $value) {
+      $salary = preg_replace("/([^0-9\\.])/i", "", $value->salary);
+      if ($salary > $minRange && $salary < $maxRange) {
+        $returnValues[] = $value;
       }
     }
-    return false;
+    return $returnValues;
   }
 }
