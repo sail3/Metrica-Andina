@@ -8,14 +8,27 @@
   </head>
   <body>
     <div class="container">
-      <div class="page-header">
-        {% block page_title %}
-        {{ title }}
-        <h1>HOLA MUNDO</h1>
-        {% endblock %}
-      </div>
+    <div class="row">
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="javascript:">{% block page_title %}{{ page_title }}{% endblock %}</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse in" aria-expanded="true">
+            <form class="navbar-form navbar-right" method="POST">
+              <input type="text" name="search-term" class="form-control" placeholder="Search...">
+            </form>
+          </div>
+        </div>
+      </nav>
+    </div>
       <div class="row">
-        {{ this.page_title }}
         <table class="table">
           <thead>
             <tr>

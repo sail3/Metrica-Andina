@@ -17,4 +17,23 @@ class Resource
     return $content;
   }
 
+  /**
+   * Retrieve a list of employees filtered by email.
+   */
+  public static function findByEmail($email)
+  {
+    $source = self::retrieveAll();
+    if (strlen($email) == 0) {
+      return $source;
+    }
+
+    $returnValues = [];
+    foreach ($source as $key => $value) {
+      if (strpos($value->email, $email) !== false) {
+        $returnValues[] = $value;
+      }
+    }
+    return $returnValues;
+  }
+
 }
