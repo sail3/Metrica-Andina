@@ -36,4 +36,19 @@ class Resource
     return $returnValues;
   }
 
+  /**
+   * Retrieve a list of employee when salary between $minRange and $maxRange.
+   */
+  public function retrieveBySalyRange($minRange, $maxRange)
+  {
+    $source = self::retrieveAll();
+    $returnValues = [];
+    foreach ($source as $key => $value) {
+      $salary = preg_replace("/([^0-9\\.])/i", "", $value->salary);
+      if ($salary > $minRange && $salary < $maxRange) {
+        $returnValues[] = $value;
+      }
+    }
+    return $returnValues;
+  }
 }

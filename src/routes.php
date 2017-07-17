@@ -19,3 +19,13 @@ $app->post('/', function ($request, $response, $args)
     'employees' => $jsonContent
   ]);
 });
+
+$app->get('/web-service/{minRange}/{maxRange}', function ($request, $response, $args)
+{
+  $jsonContent = \Application\Services\Resource::retrieveBySalyRange( $args['minRange'], $args['maxRange']);
+  $res = $response->withHeader('Content-type', 'text/xml');
+  return $this->view->render($res, 'xml_response.twig', [
+    'page_title' => 'Lista empleados',
+    'employees' => $jsonContent
+  ]);
+});
