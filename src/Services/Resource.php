@@ -36,4 +36,17 @@ class Resource
     return $returnValues;
   }
 
+  /**
+   * Retrieve a employee filtering by ID.
+   */
+  public static function findById($id)
+  {
+    $source = self::retrieveAll();
+    foreach ($source as $value ) {
+      if ($value->id === $id) {
+        return $value;
+      }
+    }
+    return false;
+  }
 }

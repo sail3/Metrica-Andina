@@ -14,3 +14,12 @@ $app->map(['GET', 'POST'], '/', function ($request, $response, $args)
     'employees' => $jsonContent
   ]);
 });
+
+$app->get('/employee/{id}', function ($request, $response, $args)
+{
+  $employee = \Application\Services\Resource::findById($args['id']);
+  return $this->view->render($response, 'detail.twig', [
+    'page_title' => 'Detalle empleado',
+    'data' => $employee,
+  ]);
+});
