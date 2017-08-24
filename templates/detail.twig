@@ -1,0 +1,36 @@
+{% extends 'layout.twig' %}
+{% block page_title %}{{ page_title }}{% endblock %}
+{% block page_content %}
+  <table class="table table-bordered">
+    <tbody>
+      <tr>
+        <th>Name:</th><td>{{ data.name }}</td>
+      </tr>
+      <tr>
+        <th>Email:</th><td>{{ data.email }}</td>
+      </tr>
+      <tr>
+        <th>Phone:</th><td>{{ data.phone }}</td>
+      </tr>
+      <tr>
+        <th>Address:</th><td>{{ data.address }}</td>
+      </tr>
+      <tr>
+        <th>Position:</th><td>{{ data.position }}</td>
+      </tr>
+      <tr>
+        <th>salary:</th><td>{{ data.salary }}</td>
+      </tr>
+      <tr>
+        <th>Skills:</th>
+        <td>
+          <ul>
+            {% for skill in data.skills %}
+            <li>{{ skill.skill }}</li>
+            {% endfor %}
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
